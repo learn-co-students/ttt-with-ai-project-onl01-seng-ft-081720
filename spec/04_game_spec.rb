@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+require "pry"
 describe 'Game' do
   describe '::WIN_COMBINATIONS' do
     it 'defines a constant WIN_COMBINATIONS with arrays for each win combination' do
@@ -229,7 +229,7 @@ describe 'Game' do
       game = Game.new
       allow($stdout).to receive(:puts)
       allow(game.player_1).to receive(:gets).and_return("1")
-
+      
       allow(game).to receive(:over?).and_return(false, true)
 
       game.play
