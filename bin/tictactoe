@@ -1,3 +1,52 @@
 #!/usr/bin/env ruby
 
 require_relative '../config/environment'
+
+
+def keep_playing(input1)
+    case input1 
+    when 0
+        new=Game.new(player_1=Players::Computer.new("X"),player_2=Players::Computer.new("O"))
+        new.play
+
+    when 1
+        puts "Do you want to go first and be X? (y/n)" 
+        input2= gets.strip.downcase
+        if input2 == "y"
+            new=Game.new(player_1=Players::Human.new("X"),player_2=Players::Computer.new("O"))
+            new.play 
+        else 
+            new=Game.new(player_1=Players::Computer.new("X"),player_2=Players::Human.new("O"))
+            new.play 
+        end
+
+    else
+        puts "Do you want to go first and be X? If not, your friend will pe player 1 with X!(y/n)" 
+        input3= gets.strip.downcase
+        if input3 == "y"
+            new=Game.new(player_1=Players::Human.new("X"),player_2=Players::Human.new("O"))
+            new.play 
+        else 
+            new=Game.new(player_1=Players::Human.new("X"),player_2=Players::Human.new("O"))
+            new.play 
+        end
+    end
+end
+
+puts "Welcome to Tic-Tac-Toe"
+puts "How would you like to play : 
+                0. Computer vs Computer
+                1. You vs Computer
+                2. You vs Your friend "
+input1 = gets.strip.to_i
+keep_playing(input1)
+puts "Would you like to play again?(y/n)"
+response= gets.strip.downcase
+        if response == "y" 
+            puts "How would you like to play : 
+                    0. Computer vs Computer
+                    1. You vs Computer
+                    2. You vs Your friend "
+            input1 = gets.strip.to_i
+            keep_playing(input1)
+        end
