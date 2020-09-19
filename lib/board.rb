@@ -46,6 +46,7 @@ attr_accessor :cells
 
     def update(input, player)
         @cells[input.to_i - 1] = player.token
+        puts "#{self}"
         # binding.pry
     end
 

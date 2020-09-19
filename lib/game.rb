@@ -3,7 +3,7 @@
 
 class Game
     # extend Players::Human
-    attr_accessor :board, :player_1, :player_2
+    attr_accessor :player_1, :player_2, :board
 
     WIN_COMBINATIONS = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
 
@@ -58,14 +58,13 @@ class Game
         
         if @board.valid_move?(input)
             @board.update(input, current_player)
+            @board.display
         else
             self.turn
         end
     end
 
     def play
-
-
         while !self.over? do 
             self.turn
         end
@@ -77,16 +76,5 @@ class Game
         if self.draw?
             puts "Cat's Game!"
         end
-
-
-
-
     end
-
-
-
-        
-
-
-
 end

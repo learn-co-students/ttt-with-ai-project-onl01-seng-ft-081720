@@ -5,16 +5,7 @@ module Players
         def move(input)
             puts "Select position..."
             input = gets.chomp
-            # binding.pry
-            
-            
-            
         end
-
     end
-
-
     
-
-
 end
